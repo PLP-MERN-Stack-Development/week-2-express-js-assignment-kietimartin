@@ -7,6 +7,7 @@ require("dotenv").config();
 const express = require("express");
 const bodyParser = require("body-parser");
 const { v4: uuidv4 } = require("uuid");
+const cors = require('cors');
 
 const products = require("./products");
 
@@ -27,6 +28,7 @@ mongoose.connect(mongoUri, {
 // Middleware setup
 app.use(bodyParser.json());
 app.use(requestLogger);
+app.use(cors);
 
 // Sample in-memory products database
 let products = [
